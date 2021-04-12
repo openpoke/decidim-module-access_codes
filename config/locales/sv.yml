@@ -1,0 +1,71 @@
+sv:
+  activemodel:
+    models:
+      decidim/access_codes/access_request_confirmed_event: Åtkomstbegäran bekräftade
+  decidim:
+    access_codes:
+      verification:
+        admin:
+          granted_authorizations:
+            destroy:
+              error: There was an error deleting the verification.
+              success: Verification was deleted successfully.
+            index:
+              deleted_user: Deleted user
+              name: Namn
+              new: Ny
+              nickname: Smeknamn
+              pending_authorizations: Väntande förfrågan
+              remove_access: Ta bort tillgång
+              title: Beviljade förfrågningar
+              username: Användarnamn
+            new:
+              actions: Funktioner
+              created_at: Skapat på
+              grant_access: Ge åtkomst
+              name: Namn
+              nickname: Smeknamn
+              search: Sök
+              users: Användare
+          pending_authorizations:
+            destroy:
+              error: There was an error rejecting the access request.
+              success: Access request was rejected successfully.
+            index:
+              approve_request: Ge åtkomst
+              deleted_user: Deleted user
+              granted_authorizations: Beviljade förfrågningar
+              name: Namn
+              nickname: Smeknamn
+              reject_request: Avvisa åtkomst
+              title: Väntande förfrågan
+            update:
+              error: There was an error verifying access for the user.
+              success: Access successfully granted for the user.
+        authorizations:
+          create:
+            error: There was an error creating the access request.
+            success: Access request successfully created.
+          edit:
+            title: Din begäran är väntande
+          new:
+            title: Begär tillgång
+            send: Skicka förfrågan
+          steps:
+            step1:
+              title: Steg 1
+              description: Skicka begäran om åtkomst.
+            step2:
+              title: Steg 2
+              description: Vänta för granskning av begäran.
+            step3:
+              title: Steg 3
+              description: >
+                Du kommer att få meddelande när den begär granskningen har slutförts.
+    events:
+      access_codes:
+        confirmed:
+          email_intro: Grattis! Du har beviljats åtkomst till %{verification_name}.
+          email_outro: Du har fått detta meddelande eftersom din begäran har godkänts.
+          email_subject: Du har beviljats åtkomst till %{verification_name}!
+          notification_title: Du har beviljats åtkomst till %{verification_name}.

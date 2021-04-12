@@ -1,0 +1,10 @@
+<p class="email-greeting"><%= t(".greeting") %></p>
+<p class="email-instructions"> <%= t(".body") %> </p>
+
+<p>
+  <strong>
+    <%= @access_code.code %>
+  </strong>
+</p>
+
+<p class="email-button email-button__cta"><%= link_to t(".verify"), decidim_verifications.authorizations_path %>
