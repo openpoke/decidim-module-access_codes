@@ -3,7 +3,7 @@ en:
     authorization_handlers:
       access_codes:
         explanation: An admin will approve or deny access
-        name: Access requests
+        name: Access codes
       admin:
         access_codes:
           help:

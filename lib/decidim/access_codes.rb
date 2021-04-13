@@ -10,5 +10,9 @@ module Decidim
     config_accessor :default_maximum_use_count do
       10
     end
+
+    config_accessor :access_code_length do
+      8
+    end
   end
 end

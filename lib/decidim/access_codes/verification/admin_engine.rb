@@ -10,10 +10,9 @@ module Decidim
         paths["db/migrate"] = nil
 
         routes do
-          resources :pending_authorizations, only: [:index, :update, :destroy]
-          resources :granted_authorizations, only: [:index, :new, :create, :destroy]
+          resources :access_codes, only: [:index, :new, :create, :update, :destroy]
 
-          root to: "pending_authorizations#index"
+          root to: "access_codes#index"
         end
       end
     end

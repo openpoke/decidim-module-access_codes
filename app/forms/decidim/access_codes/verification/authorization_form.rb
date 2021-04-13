@@ -4,21 +4,36 @@ require "securerandom"
 
 module Decidim
   module AccessCodes
-    module Admin
+    module Verification
       # A form object for users to enter their access code to get verified.
       class AuthorizationForm < AuthorizationHandler
         attribute :code, String
+        attribute :handler_handle, String
 
         validate :valid_code?
+
+        validates :code, presence: true
+
+        validates :handler_handle,
+                  presence: true,
+                  inclusion: {
+                    in: proc { |form|
+                      form.current_organization.available_authorizations
+                    }
+                  }
+
+        def handler_name
+          handler_handle
+        end
 
         private
 
         def valid_code?
-          errors.add(:code, :invalid) unless access_code.usable?
+          errors.add(:code, :invalid) unless access_code&.usable?
         end
-        
+
         def access_code
-          Decidim::AccessCodes::AccessCode.find_by(organization: organization, code: code)
+          Decidim::AccessCodes::AccessCode.find_by(organization: current_organization, code: code)
         end
       end
     end

@@ -8,11 +8,11 @@ module Decidim
 
       belongs_to :organization, foreign_key: "decidim_organization_id", class_name: "Decidim::Organization"
 
-      after_create :generate, :set_maximum_uses
+      before_save :generate, :set_maximum_uses
 
       validates :organization, presence: true
       validates :email, presence: true, 'valid_email_2/email': { disposable: true }
-      validates :code, presence: true, uniqueness: { scope: :decidim_organization_id }
+      validates :code, uniqueness: { scope: :decidim_organization_id }, if: -> { code.present? }
 
       def use!
         return raise AccessCodeError, "Code used too many times" unless usable?
@@ -27,13 +27,18 @@ module Decidim
         times_used < maximum_uses
       end
 
+      def self.length
+        Decidim::AccessCodes.config.access_code_length || 8
+      end
+
       private
 
       def generate
         return if code.present?
 
         loop do
-          self.code = Decidim::Tokenizer.new(length: 8).hex_digest("#{email}-#{organization.id}-#{created_at.to_i}")
+          digest = "#{email}-#{organization.id}-#{Rails.application.secrets.secret_key_base}"
+          self.code = Decidim::Tokenizer.new(length: AccessCode.length).hex_digest(digest)
           if AccessCode.find_by(code: code).blank?
             save!
             break

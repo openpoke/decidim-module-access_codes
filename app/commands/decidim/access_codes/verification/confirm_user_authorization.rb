@@ -7,8 +7,9 @@ module Decidim
         def call
           return broadcast(:invalid) unless form.valid?
 
-          authorization.grant!
           form.access_code.use!
+
+          authorization.grant!
           broadcast(:ok)
         end
       end

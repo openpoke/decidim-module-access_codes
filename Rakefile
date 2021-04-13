@@ -16,7 +16,7 @@ def install_module(path)
       "config/locales/decidim-access_codes.en.yml"
     )
 
-    system("bundle exec rake decidim_access_codes:install:migrations")
+    system("bundle exec rake decidim_access_codes_verification:install:migrations")
     system("bundle exec rake db:migrate")
   end
 end

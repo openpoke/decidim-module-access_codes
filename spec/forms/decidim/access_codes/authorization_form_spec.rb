@@ -14,7 +14,7 @@ module Decidim
 
         let(:verification_type) { "ac_verification" }
         let(:handler_handle) { verification_type }
-        let(:access_code) { create(:access_code, maximum_uses: maximum_uses, times_used: times_used) }
+        let(:access_code) { create(:access_code, maximum_uses: maximum_uses, times_used: times_used, organization: organization) }
         let(:times_used) { 0 }
         let(:maximum_uses) { 0 }
         let(:code) { access_code.code }
@@ -45,16 +45,16 @@ module Decidim
         context "with invalid code" do
           context "when code is not present" do
             let(:code) { nil }
-            
+
             it { is_expected.to be_invalid }
           end
 
           context "when there is no maximum count defined" do
             let(:maximum_uses) { 0 }
-            
+
             context "and it has been used many times" do
               let(:times_used) { 999 }
-              
+
               it { is_expected.to be_valid }
             end
           end
@@ -64,13 +64,13 @@ module Decidim
 
             context "when code has not yet reached maximum use count" do
               let(:times_used) { 1 }
-              
+
               it { is_expected.to be_valid }
             end
 
             context "when code has reached maximum use count" do
               let(:times_used) { 2 }
-              
+
               it { is_expected.to be_invalid }
             end
           end
