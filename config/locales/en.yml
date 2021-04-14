@@ -1,36 +1,51 @@
 en:
   decidim:
     access_codes:
+      access_code_mailer:
+        send_code:
+          greeting: Hi! You have received an access code to get verified in %{organization_name}
+          instructions_1: Please enter the access code by clicking the link below. <a href="%{url}">Enter access code</a>
+          instructions_2: Your access code is
+          notification_title:
       verification:
         admin:
           access_codes:
+            access_code:
+              code: Code
+              created_at: Created at
+              name: Name
+              email: Email
+              times_used: Times used
             create:
               error: There was an error creating the access codes.
               success: Access codes successfully sent.
             destroy:
               error: There was an error deleting the verification.
               success: Verification was deleted successfully.
-            form:
             index:
-              created_at: Created at
-              code: Code
-              name: Name
               new: New
-              email: Email
               remove_access: Remove access
               title: Access codes
-              times_used: Times used
+              users: Users
             new:
               actions: Actions
               create: Send codes
               created_at: Created at
               code: Code
               email: Email
-              instructions: Please enter a comma-separated list of emails.
-              help: A new access code will be sent to each of this emails. Each code can be used %{maximum_use_count} times.
+              example: "Name for the Code; email@example.org<br>Name for the Second Code; email@another-example.org"
+              instructions: "Please enter a list of names and emails in the following format:"
+              help: A new access code will be sent to each of these emails. Each code can be used %{maximum_use_count} times.
               maximum_uses: Maximum uses
               name: Name
               title: Send access codes
+            show:
+              back: Back
+              new: New
+              name: Name
+              email: Email
+              remove_access: Remove access
+              title: Access code
             update:
               error: There was an error verifying access for the user.
               success: Access successfully granted for the user.

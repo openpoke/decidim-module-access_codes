@@ -6,11 +6,11 @@ module Decidim
   module AccessCodes
     module Verification
       module Admin
-        # A form object to be used when admins want to send access codes to a list of emails.
-        class AccessCodeForm < AuthorizationHandler
-          attribute :emails, String
+        # A form object to be used when admins want to send access codes to a list of values like "name; email".
+        class AccessCodeForm < Form
+          attribute :data, String
 
-          validates :emails, presence: true
+          validates :data, presence: true
 
           alias organization current_organization
         end

@@ -6,6 +6,8 @@ module Decidim
       module Admin
         # ...
         class SendAccessCodes < Rectify::Command
+          SEPARATOR = ";"
+
           # Public: Initializes the command.
           #
           # form - A form object with the emails to send access codes to.
@@ -22,10 +24,8 @@ module Decidim
           def call
             return broadcast(:invalid) if @form.invalid?
 
-            @emails = @form.emails.split(/\s*,\s*/)
-
-            @emails.each do |email|
-              access_code = create_access_code(email)
+            @form.data.each_line do |data_line|
+              access_code = create_access_code(data_line)
 
               Decidim::AccessCodes::AccessCodeMailer.send_code(access_code).deliver_later
             end
@@ -39,9 +39,12 @@ module Decidim
 
           delegate :organization, to: :form
 
-          def create_access_code(email)
+          def create_access_code(data_line)
+            name, email = data_line.split(SEPARATOR).map(&:strip)
+            byebug
             Decidim::AccessCodes::AccessCode.create!(
               organization: organization,
+              name: name,
               email: email
             )
           end

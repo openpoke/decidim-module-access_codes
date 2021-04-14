@@ -1,0 +1,15 @@
+<td>
+  <%= access_code.name %>
+</td>
+<td>
+  <%= access_code.email %>
+</td>
+<td>
+  <%= l access_code.created_at, format: :long %>
+</td>
+<td>
+  <%= access_code.code %>
+</td>
+<td>
+  <%= access_code.times_used %> / <%= access_code.maximum_uses %>
+</td>
