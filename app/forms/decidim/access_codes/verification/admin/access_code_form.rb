@@ -11,6 +11,8 @@ module Decidim
           attribute :emails, String
 
           validates :emails, presence: true
+
+          alias organization current_organization
         end
       end
     end

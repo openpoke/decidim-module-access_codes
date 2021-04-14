@@ -4,6 +4,9 @@ en:
       verification:
         admin:
           access_codes:
+            create:
+              error: There was an error creating the access codes.
+              success: Access codes successfully sent.
             destroy:
               error: There was an error deleting the verification.
               success: Verification was deleted successfully.
@@ -15,7 +18,7 @@ en:
               new: New
               email: Email
               remove_access: Remove access
-              title: Granted requests
+              title: Access codes
               times_used: Times used
             new:
               actions: Actions
@@ -49,3 +52,8 @@ en:
           email_outro: You have received this notification because your access request has been approved.
           email_subject: You have been granted access to %{verification_name}!
           notification_title: You have been granted access to %{verification_name}.
+    verifications:
+      authorizations:
+        first_login:
+          actions:
+            access_codes: Get verified by entering an access code
