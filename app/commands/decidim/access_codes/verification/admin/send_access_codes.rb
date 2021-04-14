@@ -41,7 +41,7 @@ module Decidim
 
           def create_access_code(data_line)
             name, email = data_line.split(SEPARATOR).map(&:strip)
-            byebug
+
             Decidim::AccessCodes::AccessCode.create!(
               organization: organization,
               name: name,
