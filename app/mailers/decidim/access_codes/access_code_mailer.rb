@@ -20,8 +20,7 @@ module Decidim
         mail(
           to: @access_code.email,
           subject: I18n.t("decidim.access_codes.access_code_mailer.send_code.subject",
-            organization_name: translated_attribute(@organization.name)
-          )
+                          organization_name: translated_attribute(@organization.name))
         )
       end
     end
