@@ -8,22 +8,22 @@ module Decidim
 
         helper_method :authorization
 
-        before_action :load_authorization
+        before_action :authorization
 
         def new
-          enforce_permission_to :create, :authorization, authorization: @authorization
+          enforce_permission_to :create, :authorization, authorization: authorization
 
           @form = AuthorizationForm.new(handler_handle: authorization_handle).with_context(current_organization: current_organization)
         end
 
         def create
-          enforce_permission_to :create, :authorization, authorization: @authorization
+          enforce_permission_to :create, :authorization, authorization: authorization
 
           @form = AuthorizationForm.from_params(
             params.merge(user: current_user)
           ).with_context(current_organization: current_organization)
 
-          Decidim::Verifications::PerformAuthorizationStep.call(@authorization, @form) do
+          Decidim::AccessCodes::Verification::ConfirmUserAuthorization.call(authorization, @form, session) do
             on(:ok) do
               flash[:notice] = t("authorizations.create.success", scope: "decidim.access_codes.verification")
               redirect_to decidim_verifications.authorizations_path
@@ -37,19 +37,13 @@ module Decidim
         end
 
         def edit
-          enforce_permission_to :create, :authorization, authorization: @authorization
+          enforce_permission_to :create, :authorization, authorization: authorization
         end
 
         private
 
-        # rubocop:disable Naming/MemoizedInstanceVariableName
         def authorization
-          @authorization_presenter ||= AuthorizationPresenter.new(@authorization)
-        end
-        # rubocop:enable Naming/MemoizedInstanceVariableName
-
-        def load_authorization
-          @authorization = Decidim::Authorization.find_or_initialize_by(
+          @authorization ||= Decidim::Authorization.find_or_initialize_by(
             user: current_user,
             name: authorization_handle
           )

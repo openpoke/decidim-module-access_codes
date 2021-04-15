@@ -26,23 +26,14 @@ module Decidim
           handler_handle
         end
 
-        def verification_metadata
-          {
-            "access_code_id" => access_code.id,
-            "code" => access_code.code,
-            "name" => access_code.name,
-            "email" => access_code.email
-          }
+        def access_code
+          Decidim::AccessCodes::AccessCode.find_by(organization: current_organization, code: code)
         end
 
         private
 
         def valid_code?
           errors.add(:code, :invalid) unless access_code&.usable?
-        end
-
-        def access_code
-          Decidim::AccessCodes::AccessCode.find_by(organization: current_organization, code: code)
         end
       end
     end

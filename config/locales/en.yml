@@ -46,6 +46,7 @@ en:
               email: Email
               remove_access: Remove access
               title: Access code
+              users: Users verified with this code
             update:
               error: There was an error verifying access for the user.
               success: Access successfully granted for the user.

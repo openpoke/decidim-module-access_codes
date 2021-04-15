@@ -51,7 +51,7 @@ module Decidim
 
           def users
             user_ids = Decidim::Authorization.where(name: "access_codes")
-                                             .where("verification_metadata->>'access_code_id' = '?'", access_code.id)
+                                             .where("metadata->>'access_code_id' = '?'", access_code.id)
                                              .pluck(:decidim_user_id)
 
             @users ||= Decidim::User.where(organization: current_organization, id: user_ids)
