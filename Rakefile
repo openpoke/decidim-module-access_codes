@@ -11,10 +11,6 @@ def install_module(path)
       "#{source_path}/initializer.rb",
       "config/initializers/decidim_verifications_access_codes.rb"
     )
-    FileUtils.cp(
-      "#{source_path}/en.yml",
-      "config/locales/decidim-access_codes.en.yml"
-    )
 
     system("bundle exec rake decidim_access_codes_verification:install:migrations")
     system("bundle exec rake db:migrate")

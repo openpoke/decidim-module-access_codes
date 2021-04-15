@@ -1,7 +1,7 @@
 # Decidim::AccessCodes
 
-[![Build Status](https://travis-ci.com/mainio/decidim-module-access_codes.svg?branch=master)](https://travis-ci.com/mainio/decidim-module-access_codes)
-[![codecov](https://codecov.io/gh/mainio/decidim-module-access_codes/branch/master/graph/badge.svg)](https://codecov.io/gh/mainio/decidim-module-access_codes)
+[![Build Status](https://travis-ci.com/Platoniq/decidim-module-access_codes.svg?branch=master)](https://travis-ci.com/Platoniq/decidim-module-access_codes)
+[![codecov](https://codecov.io/gh/Platoniq/decidim-module-access_codes/branch/master/graph/badge.svg)](https://codecov.io/gh/Platoniq/decidim-module-access_codes)
 
 The gem has been developed by [Platoniq](https://github.com/Platoniq/).
 
@@ -19,7 +19,7 @@ The access code workflow works as follows:
 
 - An admin enters a list of emails
 - An access code is sent to each of these emails
-- Users that receive that email can enter the acces code to get verified
+- Users that receive the email can enter the acces code to get verified
 - An access code can be used N times
 
 
@@ -38,37 +38,6 @@ bundle
 rails db:migrate
 ```
 
-After installation, add this to your verifications initializer:
-
-```ruby
-# config/initializers/decidim_verifications.rb
-Decidim::Verifications.register_workflow(:your_requests) do |workflow|
-  workflow.engine = Decidim::AccessCodesF::Verification::Engine
-  workflow.admin_engine = Decidim::AccessCodes::Verification::AdminEngine
-  workflow.renewable = true
-  workflow.time_between_renewals = 5.minutes
-end
-```
-
-And finally, add these lines to your localization files to describe the workflow
-you just registered:
-
-```yaml
-en:
-  decidim:
-    authorization_handlers:
-      your_requests:
-        explanation: An admin will approve or deny access
-        name: Access codes
-      admin:
-        your_requests:
-          help:
-            - An admin enters a list of emails
-            - An access code is sent to each of these emails
-            - Users that receive that email can enter the acces code to get verified
-            - An access code can be used N times
-```
-
 ## Usage
 
 For enabling the verifcation method:
@@ -77,54 +46,35 @@ For enabling the verifcation method:
 - Login to the system management section of Decidim at `/system`.
 - Enable the newly added verification method.
 
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ TODO @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-After enabled, you can now send authorization requests for admins:
+After enabled, you can now authorize with access codes:
 
 - Login to Decidim.
 - Go to My account > Authorizations.
 - Click the newly added authorization ("Access codes").
-- Click "Send request".
+- Enter the access code.
+- Click "Submit".
 
-After the request is sent, you can now login as admin to approve the request:
+As an admin, you can send access codes:
 
 - Login to Decidim as an admin user.
 - Go to Admin dashboard > Users > Verifications > Access codes.
-- You will see a list of received requests.
-- Click the check icon to approve an access request.
+- You will see a list of sent access codes.
+- You can create new access codes by clicking on "Create access codes".
+- You can destroy existing access codes by clicking on the cross icon in each row (this will also destroy related user authorizations).
+
+As an admin, you can manage access codes:
+
+- You can view users that have authorized with each of these access codes by clicking on the person icon in each row.
+- You can view a user's profile by clicking on the person icon in each row
+- You can destroy the authorization for a specific user by clicking on the cross icon in each row
 
 After this, you can now control the access to certain functionality using
 Decidim's permissions (e.g. component permssions). For example, you can limit
 the creation of new proposals only for approved users.
 
-You are not limited for waiting for the users to send the requests. Another way
-to grant access is to directly grant it for the users. To do this:
-
-- Login to Decidim as an admin user.
-- Go to Admin dashboard > Users > Verifications > Access codes.
-- Click "Granted requests" from the top right corner of the view.
-- You will see a list of granted access requests if any are available.
-- Click "New" from the top right corner of the view.
-- Search the user you want to grant access to.
-- Click the check icon in the "Actions" column of the users listing.
-
-After this, the user is directly authorized to access the limited actions.
-
 ## Contributing
 
-See [Decidim](https://github.com/decidim/decidim).
+See [Decidim](https://github.com/Platoniq/decidim-module-access_codes).
 
 ### Developing
 

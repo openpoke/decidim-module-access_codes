@@ -1,71 +1,65 @@
-ca:
-  activemodel:
-    models:
-      decidim/access_codes/access_request_confirmed_event: Sol·licitud d'accés confirmada
+en:
   decidim:
     access_codes:
+      access_code_mailer:
+        send_code:
+          subject: Heu rebut un codi d'accés per verificar-vos a %{organization_name}
+          greeting: Hi! Heu rebut un codi d'accés per verificar-vos a %{organization_name}
+          instructions_1: El vostre codi d'accés és
+          instructions_2: Si us plau, introduiu el codi d'accés clicant el següent enllaç.
+          verify: Cliqueu aquí per verificar-vos
       verification:
         admin:
-          granted_authorizations:
-            destroy:
-              error: Hi ha hagut un error esborrant la verificació.
-              success: Verificació esborrada correctament.
-            index:
-              deleted_user: Deleted user
+          access_codes:
+            access_code:
+              code: Codi
+              created_at: Creat el
               name: Nom
-              new: Nova
-              nickname: Sobrenom
-              pending_authorizations: Sol·licituds pendents
-              remove_access: Revoca l'accés
-              title: Sol·licituds acceptades
-              username: Nom d'usuari
+              email: Correu electrònic
+              times_used: Vegades que s'ha utilitzat
+            actions:
+              all: Torna als codis d'accés
+              new: Crear codis d'accés
+            authorizations:
+              destroy:
+                error: Hi ha hagut un error eliminant la verificació.
+                success: La verificació ha estat eliminada.
+            create:
+              error: Hi ha hagut un error creant els codis d'accés.
+              success: Els codis d'accés s'han enviat.
+            destroy:
+              error: Hi ha hagut un error eliminant el codi d'accés.
+              success: El codi d'accés ha estat eliminat, així com les verificacions relacionades.
+            index:
+              remove_access: Eliminar verificació
+              title: Codis d'accés
+              users: Usuàries
             new:
               actions: Accions
-              created_at: Creat el
-              grant_access: Accés concedit el
+              create: Enviar codis
+              example: "Nom pel Codi; email@exemple.org<br>Nom pel Segon Codi; email@un-altre-exemple.org"
+              instructions: "Si us plau, introduiu un llistat de noms i correus electrònics amb el següent format:"
+              help: Un nou codi d'accés serà creat i enviat a cadascuna d'aquestes adreces de correu electrònic. Cada codi es podrà fer servir %{maximum_use_count} vegades.
+              title: Enviar codis d'accés
+            show:
+              created_at: Verificada el
+              deleted_user: Usuària eliminada
               name: Nom
-              nickname: Sobrenom
-              search: Cerca
-              users: Usuaris
-          pending_authorizations:
-            destroy:
-              error: Hi ha hagut un error revocant la sol·licitud d'accés.
-              success: Sol·licitud rebutjada correctament.
-            index:
-              approve_request: Accepta la sol·licitud
-              deleted_user: Deleted user
-              granted_authorizations: Sol·licituds acceptades
-              name: Nom
-              nickname: Sobrenom
-              reject_request: Denega la sol·licitud
-              title: Sol·licituds pendents
-            update:
-              error: Hi ha hagut un error verificant la sol·licitud per l'usuari.
-              success: Accés concedit correctament per l'usuari.
+              nickname: Àlies
+              remove_access: Eliminar verificació
+              title: Codi d'accés
+              users: Usuàries verificades amb aquest codi
         authorizations:
           create:
-            error: Hi ha hagut un error creant la sol·licitud d'accés.
-            success: Sol·licitud d'accés creada correctament.
-          edit:
-            title: La teva sol·licitud està pendent
+            error: El codi d'accés no és vàlid.
+            success: La verificació s'ha realitzat amb èxit.
           new:
-            title: Sol·licita accés
-            send: Envia la sol·licitud
-          steps:
-            step1:
-              title: Pas 1
-              description: Envia la sol·licitud d'accés
-            step2:
-              title: Pas 2
-              description: Espera a que la sol·licitud es revisi.
-            step3:
-              title: Pas 3
-              description: >
-                Seràs notificat quan la sol·licitud d'accés sigui acceptada
-    events:
-      access_codes:
-        confirmed:
-          email_intro: Felicitats! Se t'ha concedit accés com a %{verification_name}.
-          email_outro: Has rebut aquesta notificació perquè la teva sol·licitud d'accés ha sigut aprovada.
-          email_subject: Accés concedit com a %{verification_name}!
-          notification_title: Se t'ha concedit accés com a %{verification_name}.
+            code: Codi d'accés
+            instructions: Si us plau, introduiu el codi d'accés que heu rebut per correu electrònic. Si no el podeu trobar a la bústia d'entrada, reviseu la carpeta de correus no desitjats.
+            title: Introduiu el codi d'accés
+            send: Enviar
+    verifications:
+      authorizations:
+        first_login:
+          actions:
+            access_codes: Verifiqueu-vos introduint un codi d'accés
