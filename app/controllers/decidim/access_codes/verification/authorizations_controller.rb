@@ -13,7 +13,7 @@ module Decidim
         def new
           enforce_permission_to :create, :authorization, authorization: authorization
 
-          @form = AuthorizationForm.new(handler_handle: authorization_handle).with_context(current_organization: current_organization)
+          @form = AuthorizationForm.new(handler_handle: "access_codes").with_context(current_organization: current_organization)
         end
 
         def create
@@ -45,26 +45,8 @@ module Decidim
         def authorization
           @authorization ||= Decidim::Authorization.find_or_initialize_by(
             user: current_user,
-            name: authorization_handle
+            name: "access_codes"
           )
-        end
-
-        def authorization_handle
-          # In case the form is posted, the authorization handle is not
-          # available from the request path.
-          tmpform = AuthorizationForm.from_params(params)
-          return tmpform.handler_name unless tmpform.handler_name.nil?
-
-          # When the new action is called, the authorization handle is the
-          # included as a URL parameter.
-          return params[:handler] if params[:action] == "new" && params[:handler].present?
-
-          # When the renew action is called, the authorization handle is the
-          # first part of the URL.
-          return request.path.split("/")[1] if params[:action] == "renew"
-
-          # Determine the handle from the request path
-          request.path.split("/").last
         end
       end
     end

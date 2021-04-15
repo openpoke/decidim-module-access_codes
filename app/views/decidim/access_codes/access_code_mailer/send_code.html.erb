@@ -1,10 +1,12 @@
-<p class="email-greeting"><%= t(".greeting") %></p>
-<p class="email-instructions"> <%= t(".body") %> </p>
+<p class="email-greeting"><%= t(".greeting", organization_name: translated_attribute(@organization.name)) %></p>
+<p class="email-instructions"> <%= t(".instructions_1") %> </p>
 
-<p>
-  <strong>
+<p class="text-center heading2">
+  <h2>
     <%= @access_code.code %>
-  </strong>
+  </h2>
 </p>
 
-<p class="email-button email-button__cta"><%= link_to t(".verify"), decidim_verifications.authorizations_path %>
+<p class="email-instructions"> <%= t(".instructions_2") %> </p>
+
+<p class="email-button email-button__cta"><%= link_to t(".verify"), decidim_access_codes.root_path %>

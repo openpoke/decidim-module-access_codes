@@ -3,10 +3,11 @@ en:
     access_codes:
       access_code_mailer:
         send_code:
+          subject: You have received an access code to get verified in %{organization_name}
           greeting: Hi! You have received an access code to get verified in %{organization_name}
-          instructions_1: Please enter the access code by clicking the link below. <a href="%{url}">Enter access code</a>
-          instructions_2: Your access code is
-          notification_title:
+          instructions_1: Your access code is
+          instructions_2: Please enter the access code by clicking the link below.
+          verify: Click here to verify
       verification:
         admin:
           access_codes:
@@ -16,14 +17,20 @@ en:
               name: Name
               email: Email
               times_used: Times used
+            actions:
+              all: Back to all access codes
+              new: Create access codes
+            authorizations:
+              destroy:
+                error: There was an error deleting the verification.
+                success: Authorization was deleted successfully.
             create:
               error: There was an error creating the access codes.
               success: Access codes successfully sent.
             destroy:
-              error: There was an error deleting the verification.
-              success: Verification was deleted successfully.
+              error: There was an error deleting the access code.
+              success: Access code was deleted successfully.
             index:
-              new: New
               remove_access: Remove access
               title: Access codes
               users: Users
@@ -40,10 +47,11 @@ en:
               name: Name
               title: Send access codes
             show:
-              back: Back
+              created_at: Verified at
+              deleted_user: Deleted user
               new: New
               name: Name
-              email: Email
+              nickname: Nickname
               remove_access: Remove access
               title: Access code
               users: Users verified with this code
@@ -54,20 +62,11 @@ en:
           create:
             error: The access code is not valid.
             success: You've been granted access.
-          edit:
-            title: Your request is pending
           new:
             code: Access code
             instructions: Please enter the access code you have received by email. If you cannot find the email in your inbox, check your spam folder.
             title: Enter the access code
             send: Submit
-    events:
-      access_codes:
-        confirmed:
-          email_intro: Congratulations! You have been granted access to %{verification_name}.
-          email_outro: You have received this notification because your access request has been approved.
-          email_subject: You have been granted access to %{verification_name}!
-          notification_title: You have been granted access to %{verification_name}.
     verifications:
       authorizations:
         first_login:

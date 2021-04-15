@@ -24,11 +24,7 @@ module Decidim
           def call
             return broadcast(:invalid) if @form.invalid?
 
-            @form.data.each_line do |data_line|
-              access_code = create_access_code(data_line)
-
-              Decidim::AccessCodes::AccessCodeMailer.send_code(access_code).deliver_later
-            end
+            @form.data.each_line { |data_line| create_access_code(data_line) }
 
             broadcast(:ok)
           end
@@ -42,11 +38,13 @@ module Decidim
           def create_access_code(data_line)
             name, email = data_line.split(SEPARATOR).map(&:strip)
 
-            Decidim::AccessCodes::AccessCode.create!(
+            access_code = Decidim::AccessCodes::AccessCode.create!(
               organization: organization,
               name: name,
               email: email
             )
+
+            Decidim::AccessCodes::AccessCodeMailer.send_code(access_code).deliver_later
           end
         end
       end

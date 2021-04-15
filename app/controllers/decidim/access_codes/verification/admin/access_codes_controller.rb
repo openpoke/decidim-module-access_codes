@@ -5,7 +5,8 @@ module Decidim
     module Verification
       module Admin
         class AccessCodesController < Decidim::Admin::ApplicationController
-          helper_method :access_code, :access_codes, :users
+          helper_method :access_code, :access_codes, :authorizations
+          delegate :authorizations, to: :access_code
 
           def index
             enforce_permission_to :index, :authorization
@@ -39,6 +40,22 @@ module Decidim
             end
           end
 
+          def destroy
+            enforce_permission_to :destroy, :authorization
+
+            DestroyAccessCode.call(access_code) do
+              on(:ok) do
+                flash[:notice] = t("access_codes.destroy.success", scope: "decidim.access_codes.verification.admin")
+                redirect_to access_codes_path
+              end
+
+              on(:invalid) do
+                flash[:alert] = t("access_codes.destroy.error", scope: "decidim.access_codes.verification.admin")
+                redirect_to access_codes_path
+              end
+            end
+          end
+
           private
 
           def access_code
@@ -47,14 +64,6 @@ module Decidim
 
           def access_codes
             @access_codes ||= AccessCode.where(organization: current_organization).page(params[:page]).per(15)
-          end
-
-          def users
-            user_ids = Decidim::Authorization.where(name: "access_codes")
-                                             .where("metadata->>'access_code_id' = '?'", access_code.id)
-                                             .pluck(:decidim_user_id)
-
-            @users ||= Decidim::User.where(organization: current_organization, id: user_ids)
           end
         end
       end

@@ -14,6 +14,8 @@ module Decidim
       validates :email, presence: true, 'valid_email_2/email': { disposable: true }
       validates :code, uniqueness: { scope: :decidim_organization_id }, if: -> { code.present? }
 
+      before_destroy :destroy_authorizations
+
       def use!
         return raise AccessCodeError, "Code used too many times" unless usable?
 
@@ -31,7 +33,15 @@ module Decidim
         Decidim::AccessCodes.config.access_code_length || 8
       end
 
+      def authorizations
+        Decidim::Authorization.where(name: "access_codes").where("metadata->>'access_code_id' = '?'", id)
+      end
+
       private
+
+      def destroy_authorizations
+        authorizations.destroy_all
+      end
 
       def generate
         return if code.present?
