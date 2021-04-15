@@ -1,4 +1,4 @@
-en:
+ca:
   decidim:
     access_codes:
       access_code_mailer:
@@ -44,6 +44,7 @@ en:
             show:
               created_at: Verificada el
               deleted_user: Usuària eliminada
+              new: New
               name: Nom
               nickname: Àlies
               remove_access: Eliminar verificació
