@@ -1,71 +1,65 @@
-es:
-  activemodel:
-    models:
-      decidim/access_codes/access_request_confirmed_event: Solicitud de acceso confirmada
+en:
   decidim:
     access_codes:
+      access_code_mailer:
+        send_code:
+          subject: Ha recibido un código de acceso para verificarse en %{organization_name}
+          greeting: Hola! Ha recibido un código de acceso para verificarse en %{organization_name}
+          instructions_1: Su código de acceso es
+          instructions_2: Por favor, introduzca el código de acceso haciendo click en el siguiente enlace.
+          verify: Haga click aquí para verificarse
       verification:
         admin:
-          granted_authorizations:
-            destroy:
-              error: Ha ocurrido un error borrando la verificación.
-              success: Verificación borrada correctamente.
-            index:
-              deleted_user: Deleted user
+          access_codes:
+            access_code:
+              code: Código
+              created_at: Creado el
               name: Nombre
-              new: Nueva
-              nickname: Apodo
-              pending_authorizations: Solicitudes pendientes
-              remove_access: Revoca el acceso
-              title: Solicitudes aceptadas
-              username: Nombre de usuario
+              email: Correo electrónico
+              times_used: Veces que se ha usado
+            actions:
+              all: Vuelve a los códigos de acceso
+              new: Crear códigos de acceso
+            authorizations:
+              destroy:
+                error: Ha habido un error eliminando la verificación.
+                success: La verificación ha sido eliminada.
+            create:
+              error: Ha habido un error creando los códigos de acceso.
+              success: Los códigos de acceso han sido enviados.
+            destroy:
+              error: Ha habido un error eliminando el código de acceso.
+              success: El código de acceso ha sido eliminado, así como las verificaciones relacionadas.
+            index:
+              remove_access: Eliminar verificación
+              title: Códigos de acceso
+              users: Usuàries
             new:
               actions: Acciones
-              created_at: Creado el
-              grant_access: Acceso concedido el
+              create: Enviar códigos
+              example: "Nombre para el Código; email@ejemplo.org<br>Nombre para el Segundo Código; email@otro-ejemplo.org"
+              instructions: "Por favor, introduzca un listado de nombres y correos electrónicos con el siguiente formato:"
+              help: Un nuevo código de acceso será creado y enviado a cada una de estas direcciones de correo electrónico. Cada código se podrá utilizar %{maximum_use_count} veces.
+              title: Enviar códigos de acceso
+            show:
+              created_at: Verificada el
+              deleted_user: Usuaria eliminada
               name: Nombre
-              nickname: Apodo
-              search: Buscar
-              users: Usuarios
-          pending_authorizations:
-            destroy:
-              error: Ha ocurrido un error revocando la solicitud de acceso.
-              success: Solicitud rechazada correctamente.
-            index:
-              approve_request: Acepta la solicitud
-              deleted_user: Deleted user
-              granted_authorizations: Solicitudes aceptadas
-              name: Nombre
-              nickname: Apodo
-              reject_request: Denegar la solicitud
-              title: Solicitudes pendientes
-            update:
-              error: Ha ocurrido un error verificando la solicitud para el usuario.
-              success: Acceso concedido correctamente para el usuario.
+              nickname: Alias
+              remove_access: Eliminar verificación
+              title: Código de acceso
+              users: Usuarias verificadas con este código
         authorizations:
           create:
-            error: Ha ocurrido un error creando la solicitud de acceso.
-            success: Solicitud de acceso creada correctamente.
-          edit:
-            title: Tu solicitud está pendiente
+            error: El código de acceso no es válido.
+            success: La verificación se ha realitzado con éxito.
           new:
-            title: Solicita acceso
-            send: Envía la solicitud
-          steps:
-            step1:
-              title: Paso 1
-              description: Envía la solicitud de acceso
-            step2:
-              title: Paso 2
-              description: Espera a que la solicitud se revise.
-            step3:
-              title: Paso 3
-              description: >
-                Serás notificado cuando la solicitud de acceso sea aceptada
-    events:
-      access_codes:
-        confirmed:
-          email_intro: Felicidades! Se te ha concedido acceso como %{verification_name}.
-          email_outro: Has recibido esta notificación porqué tu solicitud de acceso ha sido aprobada.
-          email_subject: Acceso concedido como %{verification_name}!
-          notification_title: Se te ha concedido acceso como %{verification_name}.
+            code: Código de acceso
+            instructions: Por favor, introduzca el código de acceso que ha recibido por correo electrónico. Si no lo puede encontrar en la bandeja de entrada, revise la carpeta de correos no deseados.
+            title: Introduzca el código de acceso
+            send: Enviar
+    verifications:
+      authorizations:
+        first_login:
+          actions:
+            access_codes: Verifíquese introduciendo un código de acceso
