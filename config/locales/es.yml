@@ -1,4 +1,8 @@
 es:
+  activemodel:
+    attributes:
+      authorization:
+        code: Código
   decidim:
     access_codes:
       access_code_mailer:

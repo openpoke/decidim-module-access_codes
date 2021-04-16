@@ -1,4 +1,8 @@
 ca:
+  activemodel:
+    attributes:
+      authorization:
+        code: Codi
   decidim:
     access_codes:
       access_code_mailer:
