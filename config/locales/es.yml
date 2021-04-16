@@ -1,12 +1,16 @@
 es:
+  activemodel:
+    attributes:
+      authorization:
+        code: Code
   decidim:
     access_codes:
       access_code_mailer:
         send_code:
-          subject: Ha recibido un código de acceso para verificarse en %{organization_name}
           greeting: Hola! Ha recibido un código de acceso para verificarse en %{organization_name}
           instructions_1: Su código de acceso es
           instructions_2: Por favor, introduzca el código de acceso haciendo click en el siguiente enlace.
+          subject: Ha recibido un código de acceso para verificarse en %{organization_name}
           verify: Haga click aquí para verificarse
       verification:
         admin:
@@ -14,16 +18,12 @@ es:
             access_code:
               code: Código
               created_at: Creado el
-              name: Nombre
               email: Correo electrónico
+              name: Nombre
               times_used: Veces que se ha usado
             actions:
               all: Vuelve a los códigos de acceso
               new: Crear códigos de acceso
-            authorizations:
-              destroy:
-                error: Ha habido un error eliminando la verificación.
-                success: La verificación ha sido eliminada.
             create:
               error: Ha habido un error creando los códigos de acceso.
               success: Los códigos de acceso han sido enviados.
@@ -37,19 +37,23 @@ es:
             new:
               actions: Acciones
               create: Enviar códigos
-              example: "Nombre para el Código; email@ejemplo.org<br>Nombre para el Segundo Código; email@otro-ejemplo.org"
-              instructions: "Por favor, introduzca un listado de nombres y correos electrónicos con el siguiente formato:"
+              example: Nombre para el Código; email@ejemplo.org<br>Nombre para el Segundo Código; email@otro-ejemplo.org
               help: Un nuevo código de acceso será creado y enviado a cada una de estas direcciones de correo electrónico. Cada código se podrá utilizar %{maximum_use_count} veces.
+              instructions: 'Por favor, introduzca un listado de nombres y correos electrónicos con el siguiente formato:'
               title: Enviar códigos de acceso
             show:
               created_at: Verificada el
               deleted_user: Usuaria eliminada
-              new: New
               name: Nombre
+              new: New
               nickname: Alias
               remove_access: Eliminar verificación
               title: Código de acceso
               users: Usuarias verificadas con este código
+          authorizations:
+            destroy:
+              error: There was an error deleting the verification.
+              success: Authorization was deleted successfully.
         authorizations:
           create:
             error: El código de acceso no es válido.
@@ -57,8 +61,8 @@ es:
           new:
             code: Código de acceso
             instructions: Por favor, introduzca el código de acceso que ha recibido por correo electrónico. Si no lo puede encontrar en la bandeja de entrada, revise la carpeta de correos no deseados.
-            title: Introduzca el código de acceso
             send: Enviar
+            title: Introduzca el código de acceso
     verifications:
       authorizations:
         first_login:
