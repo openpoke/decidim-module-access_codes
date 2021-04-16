@@ -1,3 +1,4 @@
+---
 ca:
   activemodel:
     attributes:
@@ -7,10 +8,11 @@ ca:
     access_codes:
       access_code_mailer:
         send_code:
-          subject: Heu rebut un codi d'accés per verificar-vos a %{organization_name}
           greeting: Hola! Heu rebut un codi d'accés per verificar-vos a %{organization_name}
           instructions_1: El vostre codi d'accés és
-          instructions_2: Si us plau, introduiu el codi d'accés clicant el següent enllaç.
+          instructions_2: Si us plau, introduiu el codi d'accés clicant el següent
+            enllaç.
+          subject: Heu rebut un codi d'accés per verificar-vos a %{organization_name}
           verify: Cliqueu aquí per verificar-vos
       verification:
         admin:
@@ -18,22 +20,19 @@ ca:
             access_code:
               code: Codi
               created_at: Creat el
-              name: Nom
               email: Correu electrònic
+              name: Nom
               times_used: Vegades que s'ha utilitzat
             actions:
               all: Torna als codis d'accés
               new: Crear codis d'accés
-            authorizations:
-              destroy:
-                error: Hi ha hagut un error eliminant la verificació.
-                success: La verificació ha estat eliminada.
             create:
               error: Hi ha hagut un error creant els codis d'accés.
               success: Els codis d'accés s'han enviat.
             destroy:
               error: Hi ha hagut un error eliminant el codi d'accés.
-              success: El codi d'accés ha estat eliminat, així com les verificacions relacionades.
+              success: El codi d'accés ha estat eliminat, així com les verificacions
+                relacionades.
             index:
               remove_access: Eliminar verificació
               title: Codis d'accés
@@ -41,9 +40,12 @@ ca:
             new:
               actions: Accions
               create: Enviar codis
-              example: "Nom pel Codi; email@exemple.org<br>Nom pel Segon Codi; email@un-altre-exemple.org"
-              instructions: "Si us plau, introduiu un llistat de noms i correus electrònics amb el següent format:"
-              help: Un nou codi d'accés serà creat i enviat a cadascuna d'aquestes adreces de correu electrònic. Cada codi es podrà fer servir %{maximum_use_count} vegades.
+              example: Nom pel Codi; email@exemple.org<br>Nom pel Segon Codi; email@un-altre-exemple.org
+              help: Un nou codi d'accés serà creat i enviat a cadascuna d'aquestes
+                adreces de correu electrònic. Cada codi es podrà fer servir %{maximum_use_count}
+                vegades.
+              instructions: 'Si us plau, introduiu un llistat de noms i correus electrònics
+                amb el següent format:'
               title: Enviar codis d'accés
             show:
               created_at: Verificada el
@@ -53,15 +55,21 @@ ca:
               remove_access: Eliminar verificació
               title: Codi d'accés
               users: Usuàries verificades amb aquest codi
+          authorizations:
+            destroy:
+              error: Hi ha hagut un error eliminant la verificació.
+              success: La verificació ha estat eliminada.
         authorizations:
           create:
             error: El codi d'accés no és vàlid.
             success: La verificació s'ha realitzat amb èxit.
           new:
             code: Codi d'accés
-            instructions: Si us plau, introduiu el codi d'accés que heu rebut per correu electrònic. Si no el podeu trobar a la bústia d'entrada, reviseu la carpeta de correus no desitjats.
-            title: Introduiu el codi d'accés
+            instructions: Si us plau, introduiu el codi d'accés que heu rebut per
+              correu electrònic. Si no el podeu trobar a la bústia d'entrada, reviseu
+              la carpeta de correus no desitjats.
             send: Enviar
+            title: Introduiu el codi d'accés
     verifications:
       authorizations:
         first_login:
