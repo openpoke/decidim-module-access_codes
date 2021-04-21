@@ -7,6 +7,7 @@ ca:
     access_codes:
       access_code_mailer:
         send_code:
+          footer: Thank you!
           greeting: Hola! Heu rebut un codi d'accés per verificar-vos a %{organization_name}
           instructions_1: El vostre codi d'accés és
           instructions_2: Si us plau, introduiu el codi d'accés clicant el següent enllaç.
