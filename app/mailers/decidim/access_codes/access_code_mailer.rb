@@ -16,6 +16,7 @@ module Decidim
       def send_code(access_code)
         @access_code = access_code
         @organization = access_code.organization
+        @authorize_url = decidim_access_codes.new_authorization_url(host: @organization.host)
 
         mail(
           to: @access_code.email,
