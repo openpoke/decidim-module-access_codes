@@ -4,7 +4,7 @@ module Decidim
   module AccessCodes
     module Verification
       # This module contains all the domain logic associated to the access
-      # requests authorization admin panel.
+      # codes authorization admin panel.
       module Admin
       end
     end
