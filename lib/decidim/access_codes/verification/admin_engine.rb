@@ -4,7 +4,7 @@ module Decidim
   module AccessCodes
     module Verification
       # This is an engine that implements the administration interface for
-      # user authorization by access request.
+      # user authorization by access code.
       class AdminEngine < ::Rails::Engine
         isolate_namespace Decidim::AccessCodes::Verification::Admin
         paths["db/migrate"] = nil

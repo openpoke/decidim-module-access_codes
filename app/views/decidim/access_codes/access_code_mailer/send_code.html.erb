@@ -9,4 +9,6 @@
 
 <p class="email-instructions"> <%= t(".instructions_2") %> </p>
 
-<p class="email-button email-button__cta"><%= link_to t(".verify"), decidim_access_codes.root_path %>
+<p class="email-button email-button__cta"><%= link_to t(".verify"), decidim_access_codes.new_authorization_path(host: @organization.host) %>
+
+<p class="email-footer"> <%== t(".footer") %> </p>
