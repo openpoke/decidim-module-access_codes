@@ -8,6 +8,7 @@ en:
     access_codes:
       access_code_mailer:
         send_code:
+          footer: Thank you!
           greeting: Hi! You have received an access code to get verified in %{organization_name}
           instructions_1: Your access code is
           instructions_2: Please enter the access code by clicking the link below.

@@ -8,7 +8,8 @@ es:
     access_codes:
       access_code_mailer:
         send_code:
-          greeting: Hola! Ha recibido un código de acceso para verificarse en %{organization_name}
+          footer: "¡Gracias!"
+          greeting: "¡Hola! Ha recibido un código de acceso para verificarse en %{organization_name}"
           instructions_1: Su código de acceso es
           instructions_2: Por favor, introduzca el código de acceso haciendo click
             en el siguiente enlace.
