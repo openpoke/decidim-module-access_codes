@@ -1,9 +1,14 @@
 ---
 en:
+  activemodel:
+    attributes:
+      authorization:
+        code: Code
   decidim:
     access_codes:
       access_code_mailer:
         send_code:
+          footer: Thank you!
           greeting: Hi! You have received an access code to get verified in %{organization_name}
           instructions_1: Your access code is
           instructions_2: Please enter the access code by clicking the link below.
@@ -21,10 +26,6 @@ en:
             actions:
               all: Back to all access codes
               new: Create access codes
-            authorizations:
-              destroy:
-                error: There was an error deleting the verification.
-                success: Verification was deleted successfully.
             create:
               error: There was an error creating the access codes.
               success: Access codes successfully sent.
@@ -54,6 +55,10 @@ en:
               remove_access: Remove access
               title: Access code
               users: Users verified with this code
+          authorizations:
+            destroy:
+              error: There was an error deleting the verification.
+              success: Authorization was deleted successfully.
         authorizations:
           create:
             error: The access code is not valid.

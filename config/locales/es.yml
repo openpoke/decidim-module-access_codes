@@ -3,7 +3,7 @@ es:
   activemodel:
     attributes:
       authorization:
-        code: Code
+        code: Código
   decidim:
     access_codes:
       access_code_mailer:
@@ -61,7 +61,7 @@ es:
           authorizations:
             destroy:
               error: Ha habido un error eliminando la verificación.
-              success: La verificación se ha eliminado con éxito.
+              success: La verificación ha sido eliminada.
         authorizations:
           create:
             error: El código de acceso no es válido.

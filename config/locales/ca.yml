@@ -3,7 +3,7 @@ ca:
   activemodel:
     attributes:
       authorization:
-        code: Code
+        code: Codi
   decidim:
     access_codes:
       access_code_mailer:
@@ -60,7 +60,7 @@ ca:
           authorizations:
             destroy:
               error: Hi ha hagut un error eliminant la verificació.
-              success: La verificació s'ha eliminat amb èxit.
+              success: La verificació ha estat eliminada.
         authorizations:
           create:
             error: El codi d'accés no és vàlid.
