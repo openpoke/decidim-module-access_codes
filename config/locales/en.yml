@@ -1,12 +1,13 @@
+---
 en:
   decidim:
     access_codes:
       access_code_mailer:
         send_code:
-          subject: You have received an access code to get verified in %{organization_name}
           greeting: Hi! You have received an access code to get verified in %{organization_name}
           instructions_1: Your access code is
           instructions_2: Please enter the access code by clicking the link below.
+          subject: You have received an access code to get verified in %{organization_name}
           verify: Click here to verify
       verification:
         admin:
@@ -14,8 +15,8 @@ en:
             access_code:
               code: Code
               created_at: Created at
-              name: Name
               email: Email
+              name: Name
               times_used: Times used
             actions:
               all: Back to all access codes
@@ -37,15 +38,18 @@ en:
             new:
               actions: Actions
               create: Send codes
-              example: "Name for the Code; email@example.org<br>Name for the Second Code; email@another-example.org"
-              instructions: "Please enter a list of names and emails in the following format:"
-              help: A new access code will be sent to each of these emails. Each code can be used %{maximum_use_count} times.
+              example: Name for the Code; email@example.org<br>Name for the Second
+                Code; email@another-example.org
+              help: A new access code will be sent to each of these emails. Each code
+                can be used %{maximum_use_count} times.
+              instructions: 'Please enter a list of names and emails in the following
+                format:'
               title: Send access codes
             show:
               created_at: Verified at
               deleted_user: Deleted user
-              new: New
               name: Name
+              new: New
               nickname: Nickname
               remove_access: Remove access
               title: Access code
@@ -56,9 +60,10 @@ en:
             success: You've been granted access.
           new:
             code: Access code
-            instructions: Please enter the access code you have received by email. If you cannot find the email in your inbox, check your spam folder.
-            title: Enter the access code
+            instructions: Please enter the access code you have received by email.
+              If you cannot find the email in your inbox, check your spam folder.
             send: Submit
+            title: Enter the access code
     verifications:
       authorizations:
         first_login:
