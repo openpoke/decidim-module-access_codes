@@ -23,7 +23,7 @@ en:
             authorizations:
               destroy:
                 error: There was an error deleting the verification.
-                success: Authorization was deleted successfully.
+                success: Verification was deleted successfully.
             create:
               error: There was an error creating the access codes.
               success: Access codes successfully sent.
