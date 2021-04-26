@@ -53,6 +53,7 @@ es:
               created_at: Verificada el
               deleted_user: Usuaria eliminada
               name: Nombre
+              new: New
               nickname: Alias
               remove_access: Eliminar verificación
               title: Código de acceso
@@ -64,7 +65,7 @@ es:
         authorizations:
           create:
             error: El código de acceso no es válido.
-            success: La verificación se ha realitzado con éxito.
+            success: La verificación se ha realizado con éxito.
           new:
             code: Código de acceso
             instructions: Por favor, introduzca el código de acceso que ha recibido

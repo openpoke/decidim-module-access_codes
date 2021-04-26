@@ -52,6 +52,7 @@ ca:
               created_at: Verificada el
               deleted_user: Usuària eliminada
               name: Nom
+              new: New
               nickname: Àlies
               remove_access: Eliminar verificació
               title: Codi d'accés
