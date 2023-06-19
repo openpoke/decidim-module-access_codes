@@ -34,7 +34,7 @@ module Decidim
       end
 
       def authorizations
-        Decidim::Authorization.where(name: "access_codes").where("metadata->>'access_code_id' = '?'", id)
+        Decidim::Authorization.select { |auth| auth.metadata["access_code_id"] == id }
       end
 
       private
