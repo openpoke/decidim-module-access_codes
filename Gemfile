@@ -16,7 +16,7 @@ gem "decidim", DECIDIM_VERSION
 gem "decidim-access_codes", path: "."
 
 gem "bootsnap", "~> 1.4"
-gem "faker", "~> 2.14"
+gem "faker"
 gem "puma", ">= 5.0"
 gem "uglifier", "~> 4.1"
 
@@ -36,5 +36,5 @@ group :development do
 end
 
 group :test do
-  gem "codecov", require: false
+  gem "coveralls_reborn", require: false
 end

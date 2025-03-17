@@ -1,7 +1,7 @@
 # Decidim::AccessCodes
 
 [![[CI] Test](https://github.com/Platoniq/decidim-module-access_codes/actions/workflows/test.yml/badge.svg)](https://github.com/Platoniq/decidim-module-access_codes/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/Platoniq/decidim-module-access_codes/branch/main/graph/badge.svg?token=DtR8J7AOav)](https://codecov.io/gh/Platoniq/decidim-module-access_codes)
+[![Coverage Status](https://coveralls.io/repos/github/Platoniq/decidim-module-access_codes/badge.svg?branch=main)](https://coveralls.io/github/Platoniq/decidim-module-access_codes?branch=main)
 [![Maintainability](https://api.codeclimate.com/v1/badges/9c1e9246a4b12af400e3/maintainability)](https://codeclimate.com/github/Platoniq/decidim-module-access_codes/maintainability)
 
 The gem has been developed by [Platoniq](https://github.com/Platoniq/).
@@ -54,13 +54,35 @@ end
 
 ## Usage
 
-For enabling the verifcation method:
+For enabling the verification method:
 
 - Follow the installation instructions above.
 - Login to the system management section of Decidim at `/system`.
 - Enable the newly added verification method.
 
-After enabled, you can now authorize with access codes:
+After enabled, as an admin, you can send access codes:
+
+- Login to Decidim as an admin user.
+- Go to Admin dashboard > Participants > Authorizations > Access codes.
+- You will see a list of sent access codes.
+- You can create new access codes by clicking on "Create access codes".
+- You can destroy existing access codes by clicking on the cross icon in each row (this will also destroy related user authorizations).
+
+
+![create_access_codes.png](examples%2Fcreate_access_codes.png)
+
+![sent_access_codes.png](examples%2Fsent_access_codes.png)
+
+You can also view users that have been authorized with each of these access codes:
+
+- Click on the people icon.
+- You will see a list of users authorized with that code.
+- You can view a user's profile by clicking on the person icon in each row.
+- You can destroy the authorization for a specific user by clicking on the cross icon in each row.
+
+![users_verified.png](examples%2Fusers_verified.png)
+
+As a user, once you have received an access code via email, you can be authorized using it.
 
 - Login to Decidim.
 - Go to My account > Authorizations.
@@ -68,19 +90,9 @@ After enabled, you can now authorize with access codes:
 - Enter the access code.
 - Click "Submit".
 
-As an admin, you can send access codes:
+![authorizations_list.png](examples%2Fauthorizations_list.png)
 
-- Login to Decidim as an admin user.
-- Go to Admin dashboard > Users > Verifications > Access codes.
-- You will see a list of sent access codes.
-- You can create new access codes by clicking on "Create access codes".
-- You can destroy existing access codes by clicking on the cross icon in each row (this will also destroy related user authorizations).
-
-As an admin, you can manage access codes:
-
-- You can view users that have authorized with each of these access codes by clicking on the person icon in each row.
-- You can view a user's profile by clicking on the person icon in each row
-- You can destroy the authorization for a specific user by clicking on the cross icon in each row
+![submit_code.png](examples%2Fsubmit_code.png)
 
 After this, you can now control the access to certain functionality using
 Decidim's permissions (e.g. component permssions). For example, you can limit

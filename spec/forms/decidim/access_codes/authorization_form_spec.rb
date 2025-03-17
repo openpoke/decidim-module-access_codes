@@ -14,15 +14,15 @@ module Decidim
 
         let(:verification_type) { "ac_verification" }
         let(:handler_handle) { verification_type }
-        let(:access_code) { create(:access_code, maximum_uses: maximum_uses, times_used: times_used, organization: organization) }
+        let(:access_code) { create(:access_code, maximum_uses:, times_used:, organization:) }
         let(:times_used) { 0 }
         let(:maximum_uses) { 0 }
         let(:code) { access_code.code }
 
         let(:params) do
           {
-            handler_handle: handler_handle,
-            code: code
+            handler_handle:,
+            code:
           }
         end
 
@@ -39,14 +39,14 @@ module Decidim
         context "with invalid handler handle" do
           let(:handler_handle) { "unexisting" }
 
-          it { is_expected.to be_invalid }
+          it { is_expected.not_to be_valid }
         end
 
         context "with invalid code" do
           context "when code is not present" do
             let(:code) { nil }
 
-            it { is_expected.to be_invalid }
+            it { is_expected.not_to be_valid }
           end
 
           context "when there is no maximum count defined" do
@@ -71,7 +71,7 @@ module Decidim
             context "when code has reached maximum use count" do
               let(:times_used) { 2 }
 
-              it { is_expected.to be_invalid }
+              it { is_expected.not_to be_valid }
             end
           end
         end
