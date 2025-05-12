@@ -1,6 +1,6 @@
 {
   "name": "decidim-module-access_codes",
-  "version": "0.6.0",
+  "version": "0.8.0",
   "description": "A tool for Decidim that allows to authorize users using access codes",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
