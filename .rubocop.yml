@@ -3,8 +3,11 @@ inherit_gem:
 
 AllCops:
   Exclude:
-    - 'db/**/*.rb'
-    - 'vendor/**/*'
+    - "spec/decidim_dummy_app*/**/*"
+    - "db/**/*.rb"
+    - "vendor/**/*"
+    - "development_app/**/*.rb"
+    - "development_app/Gemfile"
 
 Rails/FilePath:
   Enabled: false
