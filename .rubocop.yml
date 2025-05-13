@@ -1,26 +1,16 @@
-inherit_from: .rubocop_todo.yml
-
 inherit_gem:
   decidim-dev: rubocop-decidim.yml
 
-inherit_mode:
-  merge:
-    - Exclude
-
 AllCops:
-  Include:
-    - "**/*.rb"
-    - "**/*.rake"
-    - "**/*.ru"
-    - "**/Gemfile"
-    - "**/Rakefile"
   Exclude:
-    - "spec/decidim_dummy_app/**/*"
-    - "**/spec/decidim_dummy_app/**/*"
-    - "bin/**/*"
-    - "node_modules/**/*"
-    - "**/node_modules/**/*"
-    - "db/schema.rb"
-    - "db/migrate/*"
+    - "spec/decidim_dummy_app*/**/*"
+    - "db/**/*.rb"
     - "vendor/**/*"
-    - "**/vendor/**/*"
+    - "development_app/**/*.rb"
+    - "development_app/Gemfile"
+
+Rails/FilePath:
+  Enabled: false
+
+RSpec/IndexedLet:
+  Enabled: false

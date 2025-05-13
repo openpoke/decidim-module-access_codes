@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe "Visit the admin page" do
+describe "Visit_the_admin_page" do
   let(:available_authorizations) { %w(access_codes) }
   let(:organization) { create(:organization, available_authorizations:) }
   let!(:admin) { create(:user, :admin, :confirmed, organization:) }
