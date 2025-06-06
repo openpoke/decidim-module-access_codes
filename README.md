@@ -1,10 +1,8 @@
 # Decidim::AccessCodes
 
-[![[CI] Test](https://github.com/Platoniq/decidim-module-access_codes/actions/workflows/test.yml/badge.svg)](https://github.com/Platoniq/decidim-module-access_codes/actions/workflows/test.yml)
-[![Coverage Status](https://coveralls.io/repos/github/Platoniq/decidim-module-access_codes/badge.svg?branch=main)](https://coveralls.io/github/Platoniq/decidim-module-access_codes?branch=main)
-[![Maintainability](https://api.codeclimate.com/v1/badges/9c1e9246a4b12af400e3/maintainability)](https://codeclimate.com/github/Platoniq/decidim-module-access_codes/maintainability)
-
-The gem has been developed by [Platoniq](https://github.com/Platoniq/).
+[![[CI] Test](https://github.com/openpoke/decidim-module-access_codes/actions/workflows/test.yml/badge.svg)](https://github.com/openpoke/decidim-module-access_codes/actions/workflows/test.yml)
+[![Coverage Status](https://coveralls.io/repos/github/openpoke/decidim-module-access_codes/badge.svg?branch=main)](https://coveralls.io/github/openpoke/decidim-module-access_codes?branch=main)
+[![Maintainability](https://api.codeclimate.com/v1/badges/9c1e9246a4b12af400e3/maintainability)](https://codeclimate.com/github/openpoke/decidim-module-access_codes/maintainability)
 
 A [Decidim](https://github.com/decidim/decidim) module that provides a new
 verification method that allows system administrators to define new verification
@@ -29,7 +27,7 @@ The access code workflow works as follows:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "decidim-access_codes", git: "https://github.com/Platoniq/decidim-module-access_codes"
+gem "decidim-access_codes", git: "https://github.com/openpoke/decidim-module-access_codes"
 ```
 
 And then execute:
@@ -100,7 +98,7 @@ the creation of new proposals only for approved users.
 
 ## Contributing
 
-See [Decidim](https://github.com/Platoniq/decidim-module-access_codes).
+See [Decidim](https://github.com/openpoke/decidim-module-access_codes).
 
 ### Developing
 
